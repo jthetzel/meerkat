@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: jthetzel@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-porkbun-account-key
+    solvers:
+      - selector:
+          dnsZones:
+            - daphnai.com
+        dns01:
+          webhook:
+            groupName: porkbun.talinx.dev
+            solverName: porkbun
+            config:
+              apiKey:
+                name: porkbun-secret
+                key: PORKBUN_API_KEY
+              secretApiKey:
+                name: porkbun-secret
+                key: PORKBUN_SECRET_API_KEY

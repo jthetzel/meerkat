@@ -1,5 +1,5 @@
 # Goal
-The goal today is to deploy a k3s kubernetes cluuster to this System 75 Meerkat mini computer.
+The goal today is to deploy a k3s kubernetes cluuster to this System 76 Meerkat mini computer.
 
 ## Step 1
 Deploy k3s: https://docs.k3s.io/quick-start
