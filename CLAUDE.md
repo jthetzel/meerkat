@@ -28,3 +28,6 @@
 
 ## Prompts and Plans
 - I store previous prompts in the @prompts/ directory. Before implementing an accepted plan, please save the plan to a new markdown file in @plans/ .
+
+## Git
+- Do not make git commits. I will manually make git commits.
