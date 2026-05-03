@@ -20,4 +20,4 @@ spec:
       - email
       - profile
     cookieConfig:
-      sameSite: Strict
+      sameSite: Lax
