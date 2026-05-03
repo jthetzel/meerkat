@@ -1,0 +1,23 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: google-oidc
+  namespace: default
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: longwood
+  oidc:
+    provider:
+      issuer: "https://accounts.google.com"
+    clientID: "3779889699-nn8bsagvditim2nb7crkalg6l3umhgqn.apps.googleusercontent.com"
+    clientSecret:
+      name: google-oauth-secret
+    redirectURL: "https://longwood.daphnai.com/oauth2/callback"
+    scopes:
+      - openid
+      - email
+      - profile
+    cookieConfig:
+      sameSite: Strict
