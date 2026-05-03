@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-webhook-porkbun
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://talinx.github.io/cert-manager-webhook-porkbun
+    chart: cert-manager-webhook-porkbun
+    targetRevision: v1.0.0
+    helm:
+      values: |
+        groupName: porkbun.talinx.dev
+        certManager:
+          namespace: cert-manager
+          serviceAccountName: cert-manager
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
